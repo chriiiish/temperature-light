@@ -29,7 +29,7 @@ void loop()
     Serial.print(led); Serial.print(", ");
   }
   Serial.println();
-  Serial.println("PURPLE: ");
+  Serial.print("PURPLE: ");
   for(led=0; led <= NUM_LEDS; led++)
   {
     setColor(led,255,0,255,100); //PURPLE
