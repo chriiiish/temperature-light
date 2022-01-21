@@ -31,7 +31,7 @@ void loop()
 //a delay
 void setColor(int led, int redValue, int greenValue, int blueValue, int delayValue)
 {
-  pixels.setPixelColor(led, pixels.Color(redValue, greenValue, blueValue)); 
+  pixels.setPixelColor(led, pixels.Color(redValue/5, greenValue/5, blueValue/5)); 
   pixels.show();
   delay(delayValue);
 }
