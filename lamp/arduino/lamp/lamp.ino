@@ -6,24 +6,34 @@
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUM_LEDS, PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
-  // put your setup code here, to run once:
   pixels.begin();
+  Serial.begin(115200);
+  Serial.println("Setup Complete");
 }
 
 void loop() 
 {
   int led;
+  Serial.println();
+  Serial.print("RED: "); 
   for(led=0; led <= NUM_LEDS; led++)
   {
     setColor(led,255,0,0,100); //red
+    Serial.print(led); Serial.print(", ");
   }
+  Serial.println();
+  Serial.print("CYAN: "); 
   for(led=0; led <= NUM_LEDS; led++)
   {
-    setColor(led,0,255,255,100); //
+    setColor(led,0,255,255,100); //CYAN
+    Serial.print(led); Serial.print(", ");
   }
-    for(led=0; led <= NUM_LEDS; led++)
+  Serial.println();
+  Serial.println("PURPLE: ");
+  for(led=0; led <= NUM_LEDS; led++)
   {
-    setColor(led,255,0,255,100); //
+    setColor(led,255,0,255,100); //PURPLE
+    Serial.print(led); Serial.print(", ");
   }
 }
  
