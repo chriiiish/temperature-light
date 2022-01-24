@@ -7,6 +7,13 @@ It is and AWS CDK project.
 
 // TODO diagram
 
+    .
+    ├── src                     # The source code
+    │   ├── Backend             # Actual Infrastructure Code
+    │   ├── Checkers            # CDK Aspects Checkers for best practices
+    │   └── Backend.sln         
+    └── README.md
+
 ## Getting started
 
 1. Install the dotnet cli

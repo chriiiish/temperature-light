@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- CDK Construct Library dependencies -->
+    <PackageReference Include="Amazon.CDK.Lib" Version="2.8.0" />
+    <PackageReference Include="Amazon.Jsii.Runtime" Version="1.52.1" />
+    <PackageReference Include="Constructs" Version="[10.0.0,11.0.0)" />    
+    <PackageReference Include="Amazon.Jsii.Analyzers" Version="*" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>

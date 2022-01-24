@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace Backend
 {
     sealed class Program
@@ -25,6 +26,7 @@ namespace Backend
                 Description = "Temperature Lamp: The backend services that connect IoT devices, process and store data"
             });
             Tags.Of(stack).Add("project", "temperature-light");
+            Aspects.Of(stack).Add(new Checkers.All());
 
             app.Synth();
         }
