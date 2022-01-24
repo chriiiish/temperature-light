@@ -48,7 +48,7 @@ void setColourTemperature(float temperature_difference)
   log("Setting colour temperature for difference of " + String(temperature_difference));
   
   // Default to white
-  int colourRGB[] = {255, 255, 255};
+  int colourRGB[] = {255, 255, 200};
 
 
   // Set Colours for COLD
