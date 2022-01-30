@@ -51,3 +51,28 @@ There are two database tables. These are NoSQL DynamoDB databases. Timestamps ar
 | device_id           | string        | Primary     |
 | iso_timestamp       | string        | Secondary   |
 | temperature_celcius | number        | -           | 
+
+
+## Data Writers
+There are two data writers that write data into the dynamodb tables. They are:
+
+### devices-datawriter
+This deletes devices from the `temperature-light-devices` and `temperature-history` tables. It listens for events on the `devices-datawriter` SQS queue. The payload looks like this:
+
+```
+{
+    "device_id": "DEVICEID",
+    "action": "DELETE"
+}
+```
+
+### temperature-datawriter
+This adds temperature readings to the`temperature-history` table and adds/updates the `temperature-light-devices` table. It listens for events on the `temperature-datawriter` SQS queue. The payload looks like this:
+
+```
+{
+    "device_id": "DEVICEID",
+    "temperature_celcius": 28.6,
+    "iso_timestamp": "2022-01-30T05:30:11Z"
+}
+```
