@@ -19,7 +19,8 @@ namespace Backend
                     Name = "latest_reading_iso_timestamp",
                     Type = AttributeType.STRING
                 },
-                TableName = "temperature-light-devices"
+                TableName = "temperature-light-devices",
+                Encryption = TableEncryption.AWS_MANAGED
             });
 
             var temperatureHistoryTable = new Table(this, "dynamo-history", new TableProps{
@@ -31,7 +32,8 @@ namespace Backend
                     Name = "iso_timestamp",
                     Type = AttributeType.STRING
                 },
-                TableName = "temperature-history"
+                TableName = "temperature-history",
+                Encryption = TableEncryption.AWS_MANAGED
             });
         }
     }
