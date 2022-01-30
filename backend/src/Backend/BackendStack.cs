@@ -20,7 +20,8 @@ namespace Backend
                     Type = AttributeType.STRING
                 },
                 TableName = "temperature-light-devices",
-                Encryption = TableEncryption.AWS_MANAGED
+                Encryption = TableEncryption.AWS_MANAGED,
+                BillingMode = BillingMode.PAY_PER_REQUEST
             });
 
             var temperatureHistoryTable = new Table(this, "dynamo-history", new TableProps{
@@ -33,7 +34,8 @@ namespace Backend
                     Type = AttributeType.STRING
                 },
                 TableName = "temperature-history",
-                Encryption = TableEncryption.AWS_MANAGED
+                Encryption = TableEncryption.AWS_MANAGED,
+                BillingMode = BillingMode.PAY_PER_REQUEST
             });
         }
     }
