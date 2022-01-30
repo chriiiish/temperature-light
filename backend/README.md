@@ -28,3 +28,25 @@ It is and AWS CDK project.
 * `cdk deploy`       deploy this stack to your default AWS account/region
 * `cdk diff`         compare deployed stack with current state
 * `cdk synth`        emits the synthesized CloudFormation template
+
+## Database
+There are two database tables. These are NoSQL DynamoDB databases. Timestamps are represented in [ISO format](https://en.wikipedia.org/wiki/ISO_8601).
+
+### temperature-light-devices  
+*This table stores current state of the temperature devices*
+
+| Column                             | Type          | Key / Index |
+| ---------------------------------- | ------------- | ----------- |
+| device_id                          | string        | Primary     |
+| latest_reading_iso_timestamp       | string        |             |
+| latest_reading_temperature_celcius | number        | -           | 
+
+
+### temperature-history
+*This table stores the historical temperature data*
+
+| Column              | Type          | Key / Index |
+| ------------------- | ------------- | ----------- |
+| device_id           | string        | Primary     |
+| iso_timestamp       | string        | Secondary   |
+| temperature_celcius | number        | -           | 
