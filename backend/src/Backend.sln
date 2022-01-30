@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkers", "Checkers\Checkers.csproj", "{5CCA8241-4241-4BA7-AE6D-DCE24D95A3EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lambdas", "Lambdas\Lambdas.csproj", "{89E7D757-6961-49CB-BF75-DDF2D3484F1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{5CCA8241-4241-4BA7-AE6D-DCE24D95A3EB}.Release|x64.Build.0 = Release|Any CPU
 		{5CCA8241-4241-4BA7-AE6D-DCE24D95A3EB}.Release|x86.ActiveCfg = Release|Any CPU
 		{5CCA8241-4241-4BA7-AE6D-DCE24D95A3EB}.Release|x86.Build.0 = Release|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Debug|x64.Build.0 = Debug|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Debug|x86.Build.0 = Debug|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Release|x64.ActiveCfg = Release|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Release|x64.Build.0 = Release|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Release|x86.ActiveCfg = Release|Any CPU
+		{89E7D757-6961-49CB-BF75-DDF2D3484F1C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
