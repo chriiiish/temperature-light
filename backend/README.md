@@ -11,6 +11,7 @@ It is and AWS CDK project.
     ├── src                     # The source code
     │   ├── Backend             # Actual Infrastructure Code
     │   ├── Checkers            # CDK Aspects Checkers for best practices
+    │   ├── Lambdas             # Lambda Function Code    
     │   └── Backend.sln         
     └── README.md
 
