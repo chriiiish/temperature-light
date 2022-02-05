@@ -1,0 +1,33 @@
+Description: The IAM user that runs the cloudformation deployments for the temperature-light project. This stack is created/updated manually.
+
+Resources:
+  TemperatureLightDeployUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: temperature-light-deployment-prod
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess
+      Policies:
+        - PolicyName: IamSafeGuards
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Sid: IamSafeGuards
+                Effect: Deny
+                Action:
+                  - iam:PassRole
+                  - iam:AddUserToGroup
+                  - iam:UpdateUser
+                  - iam:PutUserPolicy
+                  - iam:DeleteUserPolicy
+                  - iam:AttachUserPolicy
+                  - iam:DeleteUser
+                  - iam:DetachUserPolicy
+                Resource:
+                  - arn:aws:iam::116827804402:user/chris
+                  - arn:aws:iam::116827804402:user/temperature-light-deployment-prod
+                  - arn:aws:iam::116827804402:group/*
+                  - arn:aws:iam::116827804402:role/*
+                Condition:
+                  ForAnyValue:StringLike:
+                    aws:username: temperature-light-deployment-prod

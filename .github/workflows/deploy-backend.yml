@@ -1,0 +1,70 @@
+# Deploy the Infrastructure using AWS Cloud Development Kit
+name: Deploy Backend
+
+on:
+  push:
+    branches: [ main ]
+    paths: 
+      - backend/**/*
+      - .github/workflows/deploy-backend.yml
+  pull_request:
+    branches: [ main ]
+    paths: 
+      - backend/**/*
+      - .github/workflows/deploy-backend.yml
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: backend
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    environment: Prod
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      
+      - name: Setup .NET 3.1
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1'
+      
+      - name: Restore Cached Packages (if applicable)
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget
+      
+      - name: Restore NuGet Packages
+        run: dotnet restore src/Backend.sln
+        
+      - name: Build
+        run: dotnet build src/Backend.sln
+        
+      - name: Run Unit Tests
+        run: dotnet test src/Backend.sln
+
+      - name: Install CDK
+        run: npm install -g aws-cdk
+        
+      - name: Deploy to Production
+        run: |
+          export BRANCH_NAME=${GITHUB_REF##*/}
+          if [ "$BRANCH_NAME" == "main" ]; then
+              cdk deploy --require-approval never
+          else
+              cdk deploy --require-approval never --parameters branchname="$BRANCH_NAME"
+          fi
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ap-southeast-2
