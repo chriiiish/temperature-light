@@ -55,7 +55,7 @@ namespace Backend
                 FunctionName = "devices-datawriter",
                 Code = Code.FromAsset("src/Lambdas/bin/Debug/netcoreapp3.1"),
                 Runtime = Runtime.DOTNET_CORE_3_1,
-                Handler = "Lambdas::Lambda.DeviceDataWriter::Handle"
+                Handler = "Lambdas::Lambdas.DeviceDataWriter::Handle"
             });
             devicesDataWriter.AddEventSource(new SqsEventSource(devicesSqsQueue));
 
