@@ -53,7 +53,7 @@ namespace Backend
 
             var devicesDataWriter = new Function(this, "devices-datawriter", new FunctionProps{
                 FunctionName = "devices-datawriter",
-                Code = Code.FromAsset("src/Lambdas"),
+                Code = Code.FromAsset("src/Lambdas/bin/Debug/netcoreapp3.1"),
                 Runtime = Runtime.DOTNET_CORE_3_1,
                 Handler = "Lambdas::Lambda.DeviceDataWriter::Handle"
             });
@@ -70,7 +70,7 @@ namespace Backend
 
             var temperatureDataWriter = new Function(this, "temperature-datawriter", new FunctionProps{
                 FunctionName = "temperature-datawriter",
-                Code = Code.FromAsset("src/Lambdas"),
+                Code = Code.FromAsset("src/Lambdas/bin/Debug/netcoreapp3.1"),
                 Runtime = Runtime.DOTNET_CORE_3_1,
                 Handler = "Lambdas::Lambdas.TemperatureDataWriter::Handle"
             });
