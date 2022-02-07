@@ -53,7 +53,7 @@ namespace Backend
             });
 
             var devicesDataWriter = new DockerImageFunction(this, "devices-writer", new DockerImageFunctionProps{
-                FunctionName = "devices-datawriter",
+                FunctionName = "devices-writer",
                 Code = DockerImageCode.FromImageAsset("src/Lambdas", new AssetImageCodeProps{
                     Cmd = new string[] { "Lambdas::Lambdas.DeviceDataWriter::Handle" }
                 }),
@@ -66,7 +66,7 @@ namespace Backend
              * Temperature Data Writer
              */
             var temperatureSqsQueue = new Queue(this, "temperature-sqs", new QueueProps{
-                QueueName = "temperature-datawriter",
+                QueueName = "temperature-writer",
                 Encryption  = QueueEncryption.KMS
             });
 
