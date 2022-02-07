@@ -52,7 +52,7 @@ namespace Backend
                 Encryption  = QueueEncryption.KMS
             });
 
-            var devicesDataWriter = new DockerImageFunction(this, "devices-datawriter", new DockerImageFunctionProps{
+            var devicesDataWriter = new DockerImageFunction(this, "devices-writer", new DockerImageFunctionProps{
                 FunctionName = "devices-datawriter",
                 Code = DockerImageCode.FromImageAsset("src/Lambdas", new AssetImageCodeProps{
                     Cmd = new string[] { "Lambdas::Lambdas.DeviceDataWriter::Handle" }
@@ -70,7 +70,7 @@ namespace Backend
                 Encryption  = QueueEncryption.KMS
             });
 
-            var temperatureDataWriter = new DockerImageFunction(this, "temperature-datawriter", new DockerImageFunctionProps{
+            var temperatureDataWriter = new DockerImageFunction(this, "temperature-writer", new DockerImageFunctionProps{
                 FunctionName = "temperature-datawriter",
                 Code = DockerImageCode.FromImageAsset("src/Lambdas", new AssetImageCodeProps{
                     Cmd = new string[] { "Lambdas::Lambdas.TemperatureDataWriter::Handle" }

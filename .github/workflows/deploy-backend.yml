@@ -53,6 +53,9 @@ jobs:
       - name: Run Unit Tests
         run: dotnet test src/Backend.sln
 
+      - name: Publish
+        run: dotnet publish src/Backend.sln -o publish
+
       - name: Install CDK
         run: npm install -g aws-cdk
         
