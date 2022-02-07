@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Amazon.CDK;
 using Amazon.CDK.AWS.DynamoDB;
 using Amazon.CDK.AWS.Lambda;
@@ -51,11 +52,12 @@ namespace Backend
                 Encryption  = QueueEncryption.KMS
             });
 
-            var devicesDataWriter = new Function(this, "devices-datawriter", new FunctionProps{
+            var devicesDataWriter = new DockerImageFunction(this, "devices-datawriter", new DockerImageFunctionProps{
                 FunctionName = "devices-datawriter",
-                Code = Code.FromAsset("src/Lambdas/bin/Debug/netcoreapp3.1"),
-                Runtime = Runtime.DOTNET_CORE_3_1,
-                Handler = "Lambdas::Lambdas.DeviceDataWriter::Handle"
+                Code = DockerImageCode.FromImageAsset("src/Lambdas", new AssetImageCodeProps{
+                    Cmd = new string[] { "Lambdas::Lambdas.DeviceDataWriter::Handle" }
+                }),
+                Description = "Writes information to the devices dynamo-db table",
             });
             devicesDataWriter.AddEventSource(new SqsEventSource(devicesSqsQueue));
 
@@ -68,11 +70,12 @@ namespace Backend
                 Encryption  = QueueEncryption.KMS
             });
 
-            var temperatureDataWriter = new Function(this, "temperature-datawriter", new FunctionProps{
+            var temperatureDataWriter = new DockerImageFunction(this, "temperature-datawriter", new DockerImageFunctionProps{
                 FunctionName = "temperature-datawriter",
-                Code = Code.FromAsset("src/Lambdas/bin/Debug/netcoreapp3.1"),
-                Runtime = Runtime.DOTNET_CORE_3_1,
-                Handler = "Lambdas::Lambdas.TemperatureDataWriter::Handle"
+                Code = DockerImageCode.FromImageAsset("src/Lambdas", new AssetImageCodeProps{
+                    Cmd = new string[] { "Lambdas::Lambdas.TemperatureDataWriter::Handle" }
+                }),
+                Description = "Writes information to the temperature dynamo-db table"
             });
             temperatureDataWriter.AddEventSource(new SqsEventSource(temperatureSqsQueue));
         }
