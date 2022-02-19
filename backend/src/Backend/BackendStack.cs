@@ -48,8 +48,7 @@ namespace Backend
              * Devices Data Writer
              */
             var devicesSqsQueue = new Queue(this, "devices-sqs", new QueueProps{
-                QueueName = "devices-writer",
-                Encryption  = QueueEncryption.KMS
+                QueueName = "devices-writer"
             });
 
             var devicesDataWriter = new DockerImageFunction(this, "devices-writer", new DockerImageFunctionProps{
@@ -66,8 +65,7 @@ namespace Backend
              * Temperature Data Writer
              */
             var temperatureSqsQueue = new Queue(this, "temperature-sqs", new QueueProps{
-                QueueName = "temperature-writer",
-                Encryption  = QueueEncryption.KMS
+                QueueName = "temperature-writer"
             });
 
             var temperatureDataWriter = new DockerImageFunction(this, "temperature-writer", new DockerImageFunctionProps{
