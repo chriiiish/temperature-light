@@ -18,12 +18,14 @@ This project has a few moving parts:
    
 ## Project Layout
 
+```
    .
    ├── backend             # Back end infrastructure for the website and IOT
    ├── docs                # Resources that support the READMEs
    ├── frontend            # Front-end website for viewing temperature data
    ├── lamp                # The physical lamp
    └── README.md
+```
 
 ## Technologies
 
